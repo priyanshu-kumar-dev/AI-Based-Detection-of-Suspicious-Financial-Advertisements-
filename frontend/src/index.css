@@ -1,0 +1,159 @@
+@import "tailwindcss";
+
+/* ==============================
+   FinShield AI - Global Styles
+   Tokens, base reset, scrollbars, focus, motion.
+   Component styles live in App.css.
+================================ */
+
+:root {
+  /* Fonts */
+  --font: "Inter Variable", Inter, ui-sans-serif, system-ui, -apple-system,
+    "Segoe UI", Roboto, sans-serif;
+  --font-data: ui-monospace, "Cascadia Code", "SF Mono", Consolas, monospace;
+
+  /* Surfaces */
+  --bg: #020617;
+  --surface: #0b1220;
+  --surface-2: #131c2e;
+  --line: #1e2a42;
+  --line-strong: #33466b;
+
+  /* Text */
+  --text: #e2e8f0;
+  --muted: #8a98b2;
+
+  /* Risk levels */
+  --critical: #ff3b5c;
+  --high: #ff6b57;
+  --medium: #f2b134;
+  --low: #4cc38a;
+
+  /* Brand + interaction */
+  --accent: #e5322d;
+  --entity: #5aa9ff;
+  --focus: #22d3ee;
+
+  --radius: 10px;
+
+  color-scheme: dark;
+}
+
+@layer base {
+  html {
+    min-width: 320px;
+    height: 100%;
+    scroll-behavior: smooth;
+    scrollbar-gutter: stable;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+
+  body {
+    min-width: 320px;
+    min-height: 100dvh;
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font);
+    font-weight: 400;
+    line-height: 1.5;
+    font-synthesis: none;
+    font-optical-sizing: auto;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  #root {
+    min-height: 100dvh;
+  }
+
+  /* Tailwind v4 resets buttons to the default cursor */
+  button:not(:disabled),
+  [role="button"]:not([aria-disabled="true"]),
+  summary {
+    cursor: pointer;
+  }
+
+  button:disabled,
+  [aria-disabled="true"] {
+    cursor: not-allowed;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  [hidden] {
+    display: none !important;
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  ::selection {
+    color: #ecfeff;
+    background: rgb(34 211 238 / 30%);
+  }
+
+  /* Keyboard focus */
+  :focus-visible {
+    outline: 2px solid var(--focus);
+    outline-offset: 2px;
+  }
+
+  /* Forms */
+  textarea {
+    line-height: 1.6;
+  }
+
+  textarea::placeholder,
+  input::placeholder {
+    color: #64748b;
+    opacity: 1;
+  }
+
+  input[type="file"] {
+    max-width: 100%;
+  }
+
+  input[type="number"] {
+    appearance: textfield;
+  }
+
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    margin: 0;
+    appearance: none;
+  }
+
+  /* Scrollbars.
+     Standard properties only: Chrome 121+ ignores ::-webkit-scrollbar
+     when scrollbar-color / scrollbar-width are set, so mixing both
+     gave inconsistent results. */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #334155 transparent;
+  }
+}
+
+/* Respect reduced-motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
